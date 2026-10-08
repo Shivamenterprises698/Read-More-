@@ -96,4 +96,9 @@
     </footer>
 
 </body>
-</html>
+</html>me
+<img src="banner.jpg" class="top-banner" alt="Shivam Enterprises">
+
+<body>
+
+<img src="banner.jpg" class="top-banner" alt="Shivam Enterprises">
