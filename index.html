@@ -615,5 +615,200 @@ document.getElementById("year").textContent=new Date().getFullYear();
     </a>
   </div>
 </section>
-<!-- SHAADI VIVAH SERVICES END -->
+<!-- SHAADI VIVAH SERVICES END --
+>
+<!-- GODDA LOCAL SERVICES DIRECTORY -->
+<section id="local-directory">
+  <div class="directory-heading">
+    <p class="directory-label">GODDA LOCAL DIRECTORY</p>
+    <h2>गोड्डा और आसपास के गाँवों की सेवाएँ</h2>
+    <p>शादी-विवाह, घर, ट्रैक्टर और निर्माण सामग्री से जुड़ी स्थानीय सेवाएँ खोजें।</p>
+  </div>
+
+  <div class="directory-search">
+    <label for="serviceSearch">अपनी जरूरत खोजें</label>
+    <input id="serviceSearch" type="search"
+      placeholder="जैसे टेंट, ट्रैक्टर, सीमेंट..."
+      oninput="filterServices()">
+
+    <label for="serviceArea">इलाका चुनें</label>
+    <select id="serviceArea" onchange="filterServices()">
+      <option value="all">सभी इलाके</option>
+      <option value="godda">गोड्डा</option>
+      <option value="pathargama">पथरगामा</option>
+      <option value="bandanwar">बांदनवार</option>
+    </select>
+  </div>
+
+  <div class="directory-grid" id="serviceCards">
+
+    <article class="directory-card"
+      data-keywords="shaadi vivah tent kursi table bartan शादी विवाह टेंट कुर्सी बर्तन"
+      data-area="godda pathargama bandanwar">
+      <div class="directory-icon">🎪</div>
+      <h3>शादी-विवाह और टेंट</h3>
+      <p>टेंट, कुर्सी, टेबल, बर्तन और समारोह की व्यवस्था।</p>
+      <a class="directory-button"
+        href="https://wa.me/919103453008?text=Shaadi%20tent%20service%20ki%20jaankari%20chahiye">
+        सेवा पूछें
+      </a>
+    </article>
+
+    <article class="directory-card"
+      data-keywords="dj sound light generator भोज catering bhoj कैटरिंग"
+      data-area="godda pathargama bandanwar">
+      <div class="directory-icon">🎵</div>
+      <h3>DJ, लाइट और भोज</h3>
+      <p>DJ, साउंड, जनरेटर, कैटरिंग और भोजन की व्यवस्था।</p>
+      <a class="directory-button"
+        href="https://wa.me/919103453008?text=DJ%20light%20bhoj%20service%20ki%20jaankari%20chahiye">
+        सेवा पूछें
+      </a>
+    </article>
+
+    <article class="directory-card"
+      data-keywords="cement gitti balu ईंट sariya निर्माण सामग्री"
+      data-area="godda pathargama bandanwar">
+      <div class="directory-icon">🧱</div>
+      <h3>निर्माण सामग्री</h3>
+      <p>सीमेंट, गिट्टी, बालू, ईंट और सरिया की जानकारी।</p>
+      <a class="directory-button"
+        href="https://wa.me/919103453008?text=Construction%20material%20ki%20jaankari%20chahiye">
+        सामग्री पूछें
+      </a>
+    </article>
+
+    <article class="directory-card"
+      data-keywords="tractor किराया ढुलाई खेत जुताई ट्रैक्टर"
+      data-area="godda pathargama bandanwar">
+      <div class="directory-icon">🚜</div>
+      <h3>ट्रैक्टर और ढुलाई</h3>
+      <p>कृषि कार्य, ट्रैक्टर किराया और सामान की ढुलाई।</p>
+      <a class="directory-button"
+        href="https://wa.me/919103453008?text=Tractor%20aur%20dhulai%20ki%20jaankari%20chahiye">
+        सेवा पूछें
+      </a>
+    </article>
+
+    <article class="directory-card"
+      data-keywords="plumber electrician rajmistri painter प्लंबर बिजली मिस्त्री"
+      data-area="godda pathargama bandanwar">
+      <div class="directory-icon">🔧</div>
+      <h3>कारीगर और मरम्मत</h3>
+      <p>प्लंबर, इलेक्ट्रीशियन, राजमिस्त्री और पेंटर।</p>
+      <a class="directory-button"
+        href="https://wa.me/919103453008?text=Local%20karigar%20ki%20jaankari%20chahiye">
+        कारीगर पूछें
+      </a>
+    </article>
+
+    <article class="directory-card"
+      data-keywords="shop dukaan business listing दुकान बिजनेस"
+      data-area="godda pathargama bandanwar">
+      <div class="directory-icon">🏪</div>
+      <h3>अपना बिजनेस जोड़ें</h3>
+      <p>दुकानदार अपनी सेवाओं और संपर्क की जानकारी जुड़वाएँ।</p>
+      <a class="directory-button"
+        href="https://wa.me/919103453008?text=Mera%20business%20directory%20me%20add%20karein">
+        बिजनेस जोड़ें
+      </a>
+    </article>
+
+  </div>
+
+  <p id="noServices" hidden>
+    इस खोज से मेल खाती कोई श्रेणी नहीं मिली। दूसरा शब्द आजमाएँ।
+  </p>
+
+  <p class="directory-note">
+    यह स्थानीय सेवा निर्देशिका है। हर सेवा की उपलब्धता, कीमत और
+    सेवा प्रदाता की जानकारी ऑर्डर से पहले स्वयं सत्यापित करें।
+  </p>
+</section>
+
+<style>
+#local-directory {
+  max-width: 1050px;
+  margin: auto;
+  padding: 32px 16px;
+  font-family: Arial, sans-serif;
+  color: #24332a;
+}
+#local-directory .directory-heading { text-align: center; }
+#local-directory .directory-label {
+  color: #287047;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+#local-directory h2 { color: #174a32; }
+#local-directory .directory-search {
+  display: grid;
+  gap: 8px;
+  max-width: 600px;
+  margin: 22px auto;
+}
+#local-directory input,
+#local-directory select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd8ce;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+}
+#local-directory .directory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 15px;
+}
+#local-directory .directory-card {
+  padding: 18px;
+  border: 1px solid #dfe8e1;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 12px #0000000a;
+}
+#local-directory .directory-icon { font-size: 34px; }
+#local-directory .directory-card h3 { color: #20553d; }
+#local-directory .directory-button {
+  display: inline-block;
+  padding: 10px 14px;
+  background: #20553d;
+  color: white;
+  border-radius: 7px;
+  text-decoration: none;
+}
+#local-directory .directory-note {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #59665c;
+}
+</style>
+
+<script>
+function filterServices() {
+  const query = document.getElementById("serviceSearch")
+    .value.toLowerCase().trim();
+  const area = document.getElementById("serviceArea").value;
+  const cards = document.querySelectorAll(
+    "#local-directory .directory-card"
+  );
+  let shown = 0;
+
+  cards.forEach(function(card) {
+    const words = card.dataset.keywords.toLowerCase();
+    const areas = card.dataset.area.split(" ");
+    const matchesQuery = !query || words.includes(query);
+    const matchesArea = area === "all" || areas.includes(area);
+    const visible = matchesQuery && matchesArea;
+    card.hidden = !visible;
+    if (visible) shown++;
+  });
+
+  document.getElementById("noServices").hidden = shown !== 0;
+}
+</script>
+<!-- END GODDA LOCAL SERVICES DIRECTORY -->
+
 
