@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+by<!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
@@ -923,4 +923,181 @@ function sendOrder() {
 }
 </script>
 
+
+<!-- SHIVAM ENTERPRISES ORDER MANAGEMENT -->
+<section id="se-business" style="font-family:Arial,sans-serif;background:#f3f7fb;padding:18px;border-radius:12px;margin:20px 0;">
+  <h2 style="text-align:center;color:#17365d;">Shivam Enterprises</h2>
+  <p style="text-align:center;">सीमेंट • बालू • गिट्टी • सरिया</p>
+  <p style="text-align:center;">📍 Godda, Jharkhand</p>
+
+  <h3>1. ग्राहक का ऑर्डर</h3>
+
+  <label>ग्राहक का नाम</label>
+  <input id="seCustomer" placeholder="नाम"
+    style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;">
+
+  <label>ग्राहक का मोबाइल नंबर</label>
+  <input id="seMobile" type="tel" placeholder="10 अंकों का नंबर"
+    style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;">
+
+  <label>सामान</label>
+  <select id="seProduct" style="width:100%;padding:12px;margin:6px 0 12px;">
+    <option value="">सामान चुनें</option>
+    <option>सीमेंट</option>
+    <option>बालू</option>
+    <option>गिट्टी</option>
+    <option>सरिया</option>
+  </select>
+
+  <label>कंपनी / किस्म</label>
+  <input id="seType" placeholder="जैसे ACC, Tata Tiscon, 20mm गिट्टी"
+    style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;">
+
+  <label>मात्रा</label>
+  <input id="seQuantity" placeholder="जैसे 100 बोरी या 2 ट्रैक्टर"
+    style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;">
+
+  <label>दुकानदार का नाम</label>
+  <input id="seShop" placeholder="दुकान का नाम"
+    style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;">
+
+  <label>डिलीवरी का स्थान</label>
+  <input id="seAddress" placeholder="गाँव / स्थान"
+    style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;">
+
+  <label>दुकानदार द्वारा बताया गया कुल बिल (₹)</label>
+  <input id="seTotalBill" type="number" min="0" placeholder="सही कीमत की पुष्टि के बाद भरें"
+    style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;">
+
+  <h3>2. कमीशन का हिसाब</h3>
+
+  <label>कमीशन का तरीका</label>
+  <select id="seCommissionMode" style="width:100%;padding:12px;margin:6px 0 12px;">
+    <option value="fixed">केवल तय रकम</option>
+    <option value="percent">केवल प्रतिशत</option>
+    <option value="both">तय रकम + प्रतिशत</option>
+  </select>
+
+  <label>तय कमीशन (₹)</label>
+  <input id="seFixedFee" type="number" min="0" value="100"
+    style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;">
+
+  <label>प्रतिशत कमीशन (%)</label>
+  <input id="seRate" type="number" min="0" max="100" step="0.1" value="2"
+    style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;">
+
+  <button type="button" onclick="seMakeEstimate()"
+    style="width:100%;padding:13px;background:#17365d;color:white;border:0;border-radius:8px;font-size:16px;">
+    कुल रकम और कमीशन निकालें
+  </button>
+
+  <div id="seSummary" style="display:none;background:white;padding:14px;border-radius:8px;margin-top:12px;white-space:pre-wrap;"></div>
+
+  <button type="button" onclick="seSendAdmin()"
+    style="width:100%;padding:13px;background:#16833b;color:white;border:0;border-radius:8px;font-size:16px;margin-top:12px;">
+    📲 ऑर्डर अपने WhatsApp पर भेजें
+  </button>
+
+  <p style="font-size:12px;color:#555;">
+    यह ऑर्डर और हिसाब बनाने का टूल है। यह भुगतान नहीं लेता और न ही पैसा दुकानदार को भेजता है। ग्राहक से रकम लेने से पहले अंतिम बिल और भुगतान की शर्तें स्पष्ट करें।
+  </p>
+</section>
+
+<script>
+(function () {
+  let currentOrder = null;
+
+  function getValues() {
+    const customer = document.getElementById("seCustomer").value.trim();
+    const mobile = document.getElementById("seMobile").value.trim();
+    const product = document.getElementById("seProduct").value;
+    const type = document.getElementById("seType").value.trim();
+    const quantity = document.getElementById("seQuantity").value.trim();
+    const shop = document.getElementById("seShop").value.trim();
+    const address = document.getElementById("seAddress").value.trim();
+    const bill = Number(document.getElementById("seTotalBill").value);
+    const fixed = Number(document.getElementById("seFixedFee").value);
+    const rate = Number(document.getElementById("seRate").value);
+    const mode = document.getElementById("seCommissionMode").value;
+
+    if (!customer || !/^[6-9]\d{9}$/.test(mobile) ||
+        !product || !type || !quantity || !shop || !address) {
+      alert("कृपया ग्राहक, सामान, दुकानदार और डिलीवरी की पूरी जानकारी भरें।");
+      return null;
+    }
+
+    if (!Number.isFinite(bill) || bill <= 0 ||
+        !Number.isFinite(fixed) || fixed < 0 ||
+        !Number.isFinite(rate) || rate < 0 || rate > 100) {
+      alert("कृपया सही बिल और कमीशन भरें।");
+      return null;
+    }
+
+    const fixedPart = mode === "percent" ? 0 : fixed;
+    const percentPart = mode === "fixed" ? 0 : bill * rate / 100;
+    const commission = fixedPart + percentPart;
+
+    if (commission > bill) {
+      alert("कमीशन बिल से अधिक नहीं हो सकता।");
+      return null;
+    }
+
+    return {
+      id: "SE" + Date.now().toString().slice(-8),
+      customer, mobile, product, type, quantity, shop, address, bill,
+      commission,
+      shopDue: bill - commission
+    };
+  }
+
+  window.seMakeEstimate = function () {
+    const order = getValues();
+    if (!order) return;
+
+    currentOrder = order;
+    const summary =
+      "ऑर्डर नंबर: " + order.id +
+      "\nग्राहक: " + order.customer +
+      "\nसामान: " + order.product + " - " + order.type +
+      "\nमात्रा: " + order.quantity +
+      "\nदुकानदार: " + order.shop +
+      "\nकुल बिल: ₹" + order.bill.toFixed(2) +
+      "\nकुल कमीशन: ₹" + order.commission.toFixed(2) +
+      "\nदुकानदार को संभावित बकाया: ₹" + order.shopDue.toFixed(2) +
+      "\n\nयह गणना तभी लागू है जब कमीशन बिल से अलग अतिरिक्त शुल्क न होकर बिल में से काटने पर लिखित सहमति हो।";
+
+    const box = document.getElementById("seSummary");
+    box.style.display = "block";
+    box.textContent = summary;
+  };
+
+  window.seSendAdmin = function () {
+    if (!currentOrder) {
+      alert("पहले कुल रकम और कमीशन निकालें।");
+      return;
+    }
+
+    const o = currentOrder;
+    const message =
+      "Shivam Enterprises - नया ऑर्डर\n" +
+      "ऑर्डर नंबर: " + o.id +
+      "\nग्राहक: " + o.customer +
+      "\nमोबाइल: " + o.mobile +
+      "\nसामान: " + o.product + " / " + o.type +
+      "\nमात्रा: " + o.quantity +
+      "\nदुकानदार: " + o.shop +
+      "\nडिलीवरी: " + o.address +
+      "\nकुल बिल: ₹" + o.bill.toFixed(2) +
+      "\nअनुमानित कमीशन: ₹" + o.commission.toFixed(2) +
+      "\nदुकानदार को संभावित बकाया: ₹" + o.shopDue.toFixed(2) +
+      "\n\nभुगतान और डिलीवरी की पुष्टि बाकी है।";
+
+    window.open(
+      "https://wa.me/919103453008?text=" +
+      encodeURIComponent(message),
+      "_blank"
+    );
+  };
+})();
+</script>
 
