@@ -85,6 +85,258 @@ footer{background:#10243d;color:white;text-align:center;padding:18px;font-size:1
 </body>
 </html>
 
+<!-- SHIVAM ENTERPRISES: NEW CUSTOMER FEATURES -->
+<style>
+  #se-new {
+    font-family: Arial, sans-serif;
+    color: #202020;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 14px;
+  }
+  #se-new h2 { color: #176b3a; }
+  #se-new .se-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 14px 0;
+    background: #fff;
+  }
+  #se-new label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+  }
+  #se-new input, #se-new select, #se-new textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px;
+    margin-top: 5px;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    font-size: 16px;
+  }
+  #se-new button {
+    width: 100%;
+    border: 0;
+    border-radius: 8px;
+    padding: 13px;
+    margin-top: 12px;
+    background: #176b3a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  #se-new .se-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 10px;
+  }
+  #se-new .se-tile {
+    background: #f1f7f2;
+    padding: 16px 8px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  #se-new .se-emoji { font-size: 32px; }
+  #se-new .se-note { color: #555; font-size: 14px; }
+</style>
+
+<section id="se-new">
+  <header class="se-card">
+    <h2>Shivam Enterprises</h2>
+    <p>सीमेंट, बालू, गिट्टी, सरिया, ट्रैक्टर और वाहन बुकिंग</p>
+    <p><strong>स्थान:</strong> बंधनवार, पथरगामा, गोड्डा, झारखंड</p>
+    <p>रेट और उपलब्धता की पुष्टि फोन पर की जाएगी।</p>
+  </header>
+
+  <!-- SERVICES GALLERY -->
+  <section class="se-card">
+    <h2>हमारी सेवाएँ</h2>
+    <div class="se-gallery">
+      <div class="se-tile">
+        <div class="se-emoji">🧱</div>
+        <strong>सीमेंट</strong>
+        <p class="se-note">ब्रांड और रेट पूछें</p>
+      </div>
+      <div class="se-tile">
+        <div class="se-emoji">🪨</div>
+        <strong>बालू और गिट्टी</strong>
+        <p class="se-note">मात्रा और डिलीवरी पूछें</p>
+      </div>
+      <div class="se-tile">
+        <div class="se-emoji">🏗️</div>
+        <strong>सरिया</strong>
+        <p class="se-note">कंपनी और रेट पूछें</p>
+      </div>
+      <div class="se-tile">
+        <div class="se-emoji">🚜</div>
+        <strong>ट्रैक्टर सेवा</strong>
+        <p class="se-note">बुकिंग का अनुरोध करें</p>
+      </div>
+      <div class="se-tile">
+        <div class="se-emoji">🚚</div>
+        <strong>वाहन बुकिंग</strong>
+        <p class="se-note">जगह और तारीख बताएँ</p>
+      </div>
+      <div class="se-tile">
+        <div class="se-emoji">🎪</div>
+        <strong>टेंट और कार्यक्रम</strong>
+        <p class="se-note">सेवा की जानकारी लें</p>
+      </div>
+    </div>
+    <p class="se-note">ये अभी प्रतीकात्मक चित्र हैं। असली दुकान और सेवाओं की तस्वीरें बाद में जोड़ी जा सकती हैं।</p>
+  </section>
+
+  <!-- CUSTOMER ORDER FORM -->
+  <section class="se-card">
+    <h2>ऑर्डर या बुकिंग भेजें</h2>
+    <form id="seOrderForm">
+      <label for="seName">आपका नाम *</label>
+      <input id="seName" required maxlength="80" placeholder="अपना नाम लिखें">
+
+      <label for="sePhone">मोबाइल नंबर *</label>
+      <input id="sePhone" required type="tel" inputmode="numeric"
+        pattern="[0-9]{10}" maxlength="10" placeholder="10 अंकों का नंबर">
+
+      <label for="seItem">क्या चाहिए? *</label>
+      <select id="seItem" required>
+        <option value="">सामान या सेवा चुनें</option>
+        <option>सीमेंट</option>
+        <option>बालू</option>
+        <option>गिट्टी</option>
+        <option>सरिया</option>
+        <option>ट्रैक्टर बुकिंग</option>
+        <option>वाहन बुकिंग</option>
+        <option>टेंट / शादी-विवाह</option>
+        <option>अन्य सेवा</option>
+      </select>
+
+      <label for="seBrand">कंपनी / ब्रांड (यदि लागू हो)</label>
+      <input id="seBrand" maxlength="80" placeholder="उदाहरण: सीमेंट का ब्रांड">
+
+      <label for="seQty">मात्रा या काम का विवरण *</label>
+      <input id="seQty" required maxlength="120"
+        placeholder="उदाहरण: 20 बोरी या 1 ट्रैक्टर बालू">
+
+      <label for="seVillage">गाँव का नाम *</label>
+      <input id="seVillage" required maxlength="100" placeholder="अपने गाँव का नाम">
+
+      <label for="seAddress">डिलीवरी की जगह / नजदीकी पहचान</label>
+      <textarea id="seAddress" rows="2" maxlength="250"
+        placeholder="सड़क, टोला या नजदीकी पहचान"></textarea>
+
+      <label for="seDate">किस तारीख को चाहिए?</label>
+      <input id="seDate" type="date">
+
+      <label for="seExtra">अतिरिक्त जानकारी</label>
+      <textarea id="seExtra" rows="2" maxlength="300"
+        placeholder="कोई दूसरी जरूरत"></textarea>
+
+      <button type="button" onclick="seSendOrder('order')">
+        WhatsApp पर ऑर्डर भेजें
+      </button>
+      <button type="button" onclick="seSendOrder('rate')">
+        आज का रेट और डिलीवरी शुल्क पूछें
+      </button>
+      <button type="button" onclick="seSendOrder('booking')">
+        ट्रैक्टर / वाहन बुकिंग पूछें
+      </button>
+    </form>
+    <p class="se-note">
+      बटन दबाने पर WhatsApp खुलेगा। संदेश देखकर ग्राहक को खुद Send दबाना होगा।
+      ऑर्डर की पुष्टि और अंतिम रेट अलग से बताया जाएगा।
+    </p>
+  </section>
+
+  <!-- ORDER STATUS ENQUIRY -->
+  <section class="se-card">
+    <h2>ऑर्डर की स्थिति पूछें</h2>
+    <label for="seOrderId">आपका ऑर्डर नंबर</label>
+    <input id="seOrderId" maxlength="40" placeholder="ऑर्डर नंबर लिखें">
+    <button type="button" onclick="seCheckStatus()">WhatsApp पर स्थिति पूछें</button>
+    <p class="se-note">
+      यह बटन ऑर्डर नंबर के साथ पूछताछ भेजेगा। यह अपने-आप लाइव स्थिति नहीं दिखाता।
+    </p>
+  </section>
+
+  <section class="se-card">
+    <h2>संपर्क करें</h2>
+    <p>फोन / WhatsApp: 9103453008</p>
+    <p>वैकल्पिक संपर्क: 8298174904</p>
+    <p class="se-note">ऑर्डर तभी पक्का होगा जब हम फोन या WhatsApp पर पुष्टि करें।</p>
+  </section>
+</section>
+
+<script>
+  const seWhatsAppNumber = "919103453008";
+
+  function seSendOrder(mode) {
+    const get = id => document.getElementById(id).value.trim();
+
+    const name = get("seName");
+    const phone = get("sePhone");
+    const item = get("seItem");
+    const brand = get("seBrand");
+    const qty = get("seQty");
+    const village = get("seVillage");
+    const address = get("seAddress");
+    const date = get("seDate");
+    const extra = get("seExtra");
+
+    if (!name || !phone || !item || !qty || !village) {
+      alert("कृपया नाम, मोबाइल, सामान/सेवा, मात्रा और गाँव भरें।");
+      return;
+    }
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+      alert("कृपया 10 अंकों का मोबाइल नंबर लिखें।");
+      return;
+    }
+
+    let heading = "नया ऑर्डर";
+    if (mode === "rate") heading = "आज का रेट और डिलीवरी शुल्क पूछताछ";
+    if (mode === "booking") heading = "ट्रैक्टर / वाहन बुकिंग पूछताछ";
+
+    const message =
+      heading + "\n" +
+      "नाम: " + name + "\n" +
+      "ग्राहक मोबाइल: " + phone + "\n" +
+      "सामान/सेवा: " + item + "\n" +
+      "ब्रांड: " + (brand || "नहीं बताया") + "\n" +
+      "मात्रा/काम: " + qty + "\n" +
+      "गाँव: " + village + "\n" +
+      "डिलीवरी जगह: " + (address || "बाद में बताएँगे") + "\n" +
+      "तारीख: " + (date || "बात करके तय करें") + "\n" +
+      "अतिरिक्त जानकारी: " + (extra || "नहीं") + "\n" +
+      "कृपया रेट, उपलब्धता और डिलीवरी शुल्क की पुष्टि करें।";
+
+    window.open(
+      "https://wa.me/" + seWhatsAppNumber + "?text=" + encodeURIComponent(message),
+      "_blank"
+    );
+  }
+
+  function seCheckStatus() {
+    const id = document.getElementById("seOrderId").value.trim();
+
+    if (!id) {
+      alert("कृपया ऑर्डर नंबर लिखें।");
+      return;
+    }
+
+    const message =
+      "नमस्ते Shivam Enterprises, मेरे ऑर्डर की स्थिति बताइए।\n" +
+      "ऑर्डर नंबर: " + id;
+
+    window.open(
+      "https://wa.me/" + seWhatsAppNumber + "?text=" + encodeURIComponent(message),
+      "_blank"
+    );
+  }
+</script>
+<!-- END SHIVAM ENTERPRISES FEATURES -->
+
 <!-- प्रचार बैनर -->
 <div class="promo-banner">
   <div class="promo-content">
