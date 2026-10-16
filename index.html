@@ -507,7 +507,7 @@ footer{background:#123b2b;color:white;text-align:center;padding:20px}
 <p>© <span id="year"></span> Shiva Enterprises</p>
 <p>Godda, Jharkhand</p>
 <a href="#home" style="color:#f4c542">वापस ऊपर जाएँ ↑</a>
-</footer>
+</footer>j
 
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
@@ -810,5 +810,117 @@ function filterServices() {
 }
 </script>
 <!-- END GODDA LOCAL SERVICES DIRECTORY -->
+
+
+
+<section style="background:#f4f7fb;padding:20px;border-radius:14px;margin:20px 0;font-family:Arial,sans-serif;">
+  <h2 style="text-align:center;color:#17365d;">🏗️ Shivam Enterprises</h2>
+  <h3 style="text-align:center;">सीमेंट, बालू, गिट्टी और सरिया बुकिंग</h3>
+  <p style="text-align:center;">📍 Godda, Jharkhand और आसपास के क्षेत्र</p>
+
+  <label><b>1. सामान चुनें</b></label>
+  <select id="material" onchange="updateCompanies()"
+  style="width:100%;padding:12px;margin:8px 0 15px;border-radius:7px;">
+    <option value="">-- सामान चुनें --</option>
+    <option value="cement">सीमेंट (Cement)</option>
+    <option value="sand">बालू (Sand)</option>
+    <option value="stone">गिट्टी (Stone Chips)</option>
+    <option value="steel">सरिया (TMT Steel)</option>
+  </select>
+
+  <label><b>2. कंपनी चुनें</b></label>
+  <select id="company"
+  style="width:100%;padding:12px;margin:8px 0 15px;border-radius:7px;">
+    <option value="">-- पहले सामान चुनें --</option>
+  </select>
+
+  <label><b>3. मात्रा लिखें</b></label>
+  <input id="quantity" type="text"
+  placeholder="जैसे: 50 बोरी या 2 ट्रैक्टर"
+  style="width:100%;box-sizing:border-box;padding:12px;margin:8px 0 15px;border-radius:7px;border:1px solid #aaa;">
+
+  <button onclick="sendOrder()"
+  style="width:100%;background:#16833b;color:white;padding:14px;border:0;border-radius:8px;font-size:17px;font-weight:bold;">
+    📲 Click Here – कीमत पूछें
+  </button>
+
+  <p style="font-size:13px;text-align:center;color:#555;">
+    उचित कीमत और डिलीवरी की जानकारी WhatsApp पर प्राप्त करें।
+  </p>
+</section>
+
+<script>
+const companies = {
+  cement: [
+    "ACC Cement",
+    "Ambuja Cement",
+    "UltraTech Cement",
+    "Dalmia Cement",
+    "Shree Cement",
+    "Birla Cement",
+    "JK Cement",
+    "Ramco Cement",
+    "Bangur Cement",
+    "अन्य सीमेंट कंपनी"
+  ],
+  sand: [
+    "स्थानीय बालू सप्लायर",
+    "नदी की बालू",
+    "अन्य बालू सप्लायर"
+  ],
+  stone: [
+    "स्थानीय गिट्टी सप्लायर",
+    "20mm गिट्टी",
+    "10mm गिट्टी",
+    "अन्य गिट्टी सप्लायर"
+  ],
+  steel: [
+    "Tata Tiscon",
+    "JSW Neosteel",
+    "Jindal Panther",
+    "SAIL TMT",
+    "Shyam Steel",
+    "Kamdhenu TMT",
+    "अन्य सरिया कंपनी"
+  ]
+};
+
+function updateCompanies() {
+  const material = document.getElementById("material").value;
+  const company = document.getElementById("company");
+  company.innerHTML = '<option value="">-- कंपनी / सप्लायर चुनें --</option>';
+
+  (companies[material] || []).forEach(function(name) {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    company.appendChild(option);
+  });
+}
+
+function sendOrder() {
+  const materialSelect = document.getElementById("material");
+  const company = document.getElementById("company").value;
+  const quantity = document.getElementById("quantity").value.trim();
+
+  if (!materialSelect.value || !company) {
+    alert("कृपया सामान और कंपनी चुनें।");
+    return;
+  }
+
+  const material = materialSelect.options[materialSelect.selectedIndex].text;
+  let message = "नमस्ते Shivam Enterprises!\nमुझे " + material +
+    " चाहिए।\nकंपनी/सप्लायर: " + company;
+
+  if (quantity) message += "\nमात्रा: " + quantity;
+
+  message += "\nकृपया कीमत और Godda में डिलीवरी की जानकारी दें।";
+
+  window.open(
+    "https://wa.me/919103453008?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}
+</script>
 
 
